@@ -1,1 +1,77 @@
-123
+# Django 基本命令
+django-admin  查看Django项目是否创建成功(会出现一堆命令)
+startproject      创建一个Django项目
+startapp            创建一个Django应用
+check                检验项目的完整性
+runserver          本地简易运行Django项目
+shell                  进入Django项目的Python shell环境
+test                    执行Django用例测试
+makemigrations  创建模型变更的迁移文件
+migrate             执行上一个命令创建的迁移文件
+dumpdata        把数据库数据导出到文件
+loaddata           把文件数据导入到数据库
+
+#Django项目目录结构
+settings.py       项目配置文件
+urls.py              项目路由配置文件
+manage.py       项目管理文件
+urls.py              项目配置url文件
+wsgi.py             项目web服务器的网关接口,是python应用与Web服务器交互的接口，一般不需要做任何修改。
+asgi.py              项目ASGI"的服务的入口文件了，内容基本同wsgi.py。(ASGI和WSGI，都是一种 Web 服务网关 接口协议，是在CGI的标准上构建的。
+views.py           项目配置视图函数的文件(自己创建)
+
+#运行 Django项目
+Python manage.py runserver 
+
+#创建Django应用
+Python manage.py startapp 应用名称
+
+#Django应用目录结构
+migrations.py  项目数据迁移模块
+views.py           项目视图处理的地方
+models.py        项目定义应用模型的地方
+admin.py          项目 定义admin模块管理对象的地方
+apps.py             项目 声明应用的地方
+tests.py             项目编写应用测试用例的地方
+urls.py               项目(自行创建)管理应用路由的地方
+
+#makemigrations会在当前目录下生成一个migrations文件夹，该文件夹的内容就是数据库要执行的内容
+python manage.py makemigrations
+
+#migrate就是执行之前生成的migrations文件，这一步才是操作数据库的一步
+python manage.py migrate
+
+#进入Django shell
+Python manage.py shell
+
+#创建超级管理员
+python manage.py createsuperuser
+
+
+3. Django的路由配置
+不管是应用级还是项目级路由 ,都需要分别到项目的urls.py中配置.
+ 项目的url路由 +  应用的url路由
+
+4. Django的视图层
+		视图函数，简称视图，属于Django的视图层，默认定义在views.py文件中，是用来处理web请求信息以及返回响应信息的函数，
+所以研究视图函数只需熟练掌握两个对象即可：请求对象(HttpRequest)和响应对象(HttpResponse)
+https://www.cnblogs.com/Dr-wei/p/11735582.html
+
+5. Django的模型层
+		模型层位于视图层和数据库之间
+		作用:屏蔽不同的数据库之间的差异,使开发者更加专注于逻辑的开发,提供了很多便捷的工具,有助于开发.
+		字段定义:https://www.cnblogs.com/xinfan1/p/11545501.html
+
+6. Django的模板系统
+		{{ }}和 {% %}
+{{ }}表示变量，在模板渲染的时候替换成值，{% %}(表示标签)表示逻辑相关的操作。
+		
+7. Django的Admin模块
+		Django 的后台管理工具,自动生成的
+		读取定义的模型元数据,提供强大的管理使用页面
+		登陆页面进行管理
+		
+8. Django的Shell
+		交互式
+		方便调试,开发,测试小型代码 ,Debug和scrapy的shell相同的效果及作用
+
