@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>添加博客</title>
+    <!-- 最新版本的 Bootstrap 核心 CSS 文件 -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@3.3.7/dist/css/bootstrap.min.css"
+          integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+
+    <!-- 最新的 Bootstrap 核心 JavaScript 文件 -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@3.3.7/dist/js/bootstrap.min.js"
+            integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa"
+            crossorigin="anonymous"></script>
+</head>
+<body>
+<div class="page-header">
+    <h1>&nbsp&nbsp<span class="label label-info">编辑博客</span></h1>
+</div>
+<form action="/blog/submitblog" method="post">
+    {#  post提交表单需要加上 {% csrf_token %}  #}
+    {# 目的：csrf_token 是为了防止csrf（跨站请求伪造），什么是csrf，这篇文章讲的很好：https://www.guhei.net/forum.php?mod=viewthread&tid=1449&extra=page%3D1%26filter%3Dtypeid%26typeid%3D38。文章最后也说到了，防止csrf的手段就有给form加个token。#}
+    {# 具体做了什么：在渲染模板时，django会把 {%  csrf_token  %} 替换成一个<input type="hidden" , name='csrfmiddlewaretoken' value=服务器随机生成的token>元素。在提交表单的时候，会把这个token给提交上去。django默认启动 'django.middleware.csrf.CsrfViewMiddleware'中间件， 这个中间件就是来验证csrf_token的。如果没有加csrf_token，就会出错。 #}
+    {% csrf_token %}
+    <input type="hidden" name="article_id" value="{{ article.article_id | default:'0'}}">
+    <div class="col-lg-5">
+        <div class="input-group">
+            <span class="input-group-addon" id="basic-addon1">标题</span>
+            <input type="text" class="form-control" value="{{ article.title }}" aria-describedby="basic-addon1"
+                   name="title" placeholder="标题">
+        </div>
+    </div>
+
+    <div class="col-lg-8">
+        <div class="input-group">
+            <span class="input-group-addon" id="basic-addon1">简介</span>
+            <input type="text" class="form-control" value="{{ article.brief_comtent }}"
+                   aria-describedby="basic-addon1"
+                   name="brief_comtent" placeholder="简介">
+        </div>
+    </div>
+    <div class="col-lg-8">
+        <div class="input-group">
+            <span class="input-group-addon" id="basic-addon1">内容</span>
+            <input type="text" class="form-control" value="{{ article.comtent }}" aria-describedby="basic-addon1"
+                   name="comtent" placeholder="内容">
+        </div>
+    </div>
+
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <div>
+        <div>&nbsp&nbsp
+            <button type="submit" class="btn btn-default">提交</button>
+        </div>
+
+    </div>
+
+
+</form>
+</body>
+</html>
