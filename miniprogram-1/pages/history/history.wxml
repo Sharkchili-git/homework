@@ -1,0 +1,8 @@
+<!--pages/history/history.wxml-->
+<view bindtap="text_network">点击获取历史上的今天</view>
+<view wx:for="{{infos}}" wx:key="infos">{{index}}:{{item._id}}
+  <view>事件:{{item.title}}</view>
+  <view>阳历:{{item.year}}年{{item.month}}月{{item.day}}日</view>
+  <view>阴历:{{item.lunar}}</view>
+  <view>----------------------------------------------</view>
+</view>

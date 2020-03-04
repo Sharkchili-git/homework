@@ -1,0 +1,11 @@
+<!--pages/weather/weather.wxml-->
+<!-- <text>pages/weather/weather.wxml</text> -->
+<view wx:for="{{infos}}" wx:key="key">
+  <view wx:for="{{item}}" wx:key="key">
+    <view>index:{{index}}</view>
+    <view>日期:{{item.ymd}} - {{item.week}}</view>
+    <view>最高温度:{{item.high}}</view>
+    <view>最低温度:{{item.low}}</view>
+    <view>------------------</view>
+  </view>
+</view>

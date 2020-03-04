@@ -1,0 +1,21 @@
+<!--pages/ceshi/ceshi.wxml-->
+<!-- <text>pages/ceshi/ceshi.wxml</text> -->
+<view>这里是测试页</view>
+<view bindtap="click">点击</view>
+<view bindtap="text_network">测试网络请求</view>
+<button bindtap="save_data">保存</button>
+<view>----------------------------------------------</view>
+<button bindtap="read_data">读取</button>
+<view>----------------------------------------------</view>
+<button bindtap="remove_data">清除缓存</button>
+<view>----------------------------------------------</view>
+<button bindtap="clear">清空</button>
+<view>----------------------------------------------</view>
+<view>历史上的今天</view>
+<view wx:for="{{infos}}" wx:key="infos">{{index}}:{{item._id}}
+  <view>事件:{{item.title}}</view>
+  <view>阳历:{{item.year}}年{{item.month}}月{{item.day}}日</view>
+  <view>阴历:{{item.lunar}}</view>
+  <view>----------------------------------------------</view>
+</view>
+
